@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>កម្មវិធីបម្លែងរូបិយប័ណ្ណ</title>
-	<link rel="icon" href="cc.png">
+    <link rel="icon" href="cc.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,6 +42,11 @@
         button:hover {
             background-color: #45a049;
         }
+
+        /* Additional style for the exchange rate input */
+        #exchangeRate {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +61,12 @@
             <option value="Baht">ប្រាក់បាត (បាត)</option>
         </select>
     </div>
+
+    <!-- Additional input for exchange rate -->
+    <div>
+        <label for="exchangeRate">អត្រាប្តូរប្រាក់ (1 USD = X):</label>
+        <input type="number" id="exchangeRate" placeholder="អត្រាប្តូរប្រាក់" />
+    </div>
     
     <div>
         <label for="amount">បញ្ចូលចំនួនទឹកប្រាក់៖</label>
@@ -68,8 +79,8 @@
     <script>
         function convertCurrency() {
             const exchangeRates = {
-                VND: 23300,  // 1 USD = 23300 VND
-                Baht: 30.5   // 1 USD = 30.5 Baht
+                VND: parseFloat(document.getElementById("exchangeRate").value) || 23300,
+                Baht: parseFloat(document.getElementById("exchangeRate").value) || 30.5
             };
 
             const currency = document.getElementById("currency").value;
