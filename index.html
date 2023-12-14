@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>កម្មវិធីបម្លែងរូបិយប័ណ្ណ</title>
+	<link rel="icon" href="cc.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .converter-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter-container">
+    <h1>កម្មវិធីបម្លែងរូបិយប័ណ្ណ</h1>
+    
+    <div>
+        <label for="currency">ជ្រើសរើសរូបិយប័ណ្ណ៖</label>
+        <select id="currency">
+            <option value="VND">វៀតណាមដុង (VND)</option>
+            <option value="Baht">ប្រាក់បាត (បាត)</option>
+        </select>
+    </div>
+    
+    <div>
+        <label for="amount">បញ្ចូលចំនួនទឹកប្រាក់៖</label>
+        <input type="number" id="amount" placeholder="បញ្ចូលចំនួនទឹកប្រាក់" />
+    </div>
+    
+    <button onclick="convertCurrency()">បម្លែងសាច់ប្រាក់</button>
+    <p id="result"></p>
+
+    <script>
+        function convertCurrency() {
+            const exchangeRates = {
+                VND: 23200,  // 1 USD = 23,300 VND
+                Baht: 30.5   // 1 USD = 30.5 Baht
+            };
+
+            const currency = document.getElementById("currency").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+
+            if (!isNaN(amount)) {
+                const amountInUSD = amount / exchangeRates[currency];
+                document.getElementById("result").innerHTML = `${amount} ${currency} គឺទទួលបាន ${amountInUSD.toFixed(2)} USD`;
+            } else {
+                document.getElementById("result").innerHTML = "សូមបញ្ចូលចំនួនត្រឹមត្រូវ";
+            }
+        }
+    </script>
+</div>
+
+</body>
+</html>
