@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>កម្មវិធីបម្លែងរូបិយប័ណ្ណ</title>
-    <link rel="icon" href="cc.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="cc.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="cc.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="cc.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="cc.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="cc.png">
+    <link rel="icon" sizes="180x180" href="cc.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,52 +55,54 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="converter-container">
-    <h1>កម្មវិធីបម្លែងរូបិយប័ណ្ណ</h1>
-    
-    <div>
-        <label for="currency">ជ្រើសរើសរូបិយប័ណ្ណ៖</label>
-        <select id="currency">
-            <option value="VND">វៀតណាមដុង (VND)</option>
-            <option value="Baht">ប្រាក់បាត (បាត)</option>
-        </select>
-    </div>
+    <div class="converter-container">
+        <h1>កម្មវិធីបម្លែងរូបិយប័ណ្ណ</h1>
 
-    <!-- Additional input for exchange rate -->
-    <div>
-        <label for="exchangeRate">អត្រាប្តូរប្រាក់ (1 USD = X):</label>
-        <input type="number" id="exchangeRate" placeholder="អត្រាប្តូរប្រាក់" />
-    </div>
-    
-    <div>
-        <label for="amount">បញ្ចូលចំនួនទឹកប្រាក់៖</label>
-        <input type="number" id="amount" placeholder="បញ្ចូលចំនួនទឹកប្រាក់" />
-    </div>
-    
-    <button onclick="convertCurrency()">បម្លែងសាច់ប្រាក់</button>
-    <p id="result"></p>
+        <div>
+            <label for="currency">ជ្រើសរើសរូបិយប័ណ្ណ៖</label>
+            <select id="currency">
+                <option value="VND">វៀតណាមដុង (VND)</option>
+                <option value="Baht">ប្រាក់បាត (បាត)</option>
+            </select>
+        </div>
 
-    <script>
-        function convertCurrency() {
-            const exchangeRates = {
-                VND: parseFloat(document.getElementById("exchangeRate").value) || 23300,
-                Baht: parseFloat(document.getElementById("exchangeRate").value) || 30.5
-            };
+        <!-- Additional input for exchange rate -->
+        <div>
+            <label for="exchangeRate">អត្រាប្តូរប្រាក់ (1 USD = X):</label>
+            <input type="number" id="exchangeRate" placeholder="អត្រាប្តូរប្រាក់" />
+        </div>
 
-            const currency = document.getElementById("currency").value;
-            const amount = parseFloat(document.getElementById("amount").value);
+        <div>
+            <label for="amount">បញ្ចូលចំនួនទឹកប្រាក់៖</label>
+            <input type="number" id="amount" placeholder="បញ្ចូលចំនួនទឹកប្រាក់" />
+        </div>
 
-            if (!isNaN(amount)) {
-                const amountInUSD = amount / exchangeRates[currency];
-                document.getElementById("result").innerHTML = `${amount} ${currency} គឺទទួលបាន ${amountInUSD.toFixed(2)} USD`;
-            } else {
-                document.getElementById("result").innerHTML = "សូមបញ្ចូលចំនួនត្រឹមត្រូវ";
+        <button onclick="convertCurrency()">បម្លែងសាច់ប្រាក់</button>
+        <p id="result"></p>
+
+        <script>
+            function convertCurrency() {
+                const exchangeRates = {
+                    VND: parseFloat(document.getElementById("exchangeRate").value) || 23300,
+                    Baht: parseFloat(document.getElementById("exchangeRate").value) || 30.5
+                };
+
+                const currency = document.getElementById("currency").value;
+                const amount = parseFloat(document.getElementById("amount").value);
+
+                if (!isNaN(amount)) {
+                    const amountInUSD = amount / exchangeRates[currency];
+                    document.getElementById("result").innerHTML = `${amount} ${currency} គឺទទួលបាន ${amountInUSD.toFixed(2)} USD`;
+                } else {
+                    document.getElementById("result").innerHTML = "សូមបញ្ចូលចំនួនត្រឹមត្រូវ";
+                }
             }
-        }
-    </script>
-</div>
+        </script>
+    </div>
 
 </body>
+
 </html>
